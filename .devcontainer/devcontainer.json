@@ -33,13 +33,14 @@
 	// "mounts": [
 	// 	"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix"
 	// ],
-	// "containerEnv": {
-	// 	"DISPLAY": "${localEnv:DISPLAY}"
-	// },
+	"containerEnv": {
+	"DISPLAY": "${localEnv:DISPLAY}",
+	"QT_X11_NO_MITSHM": "1"
+	},
 
 
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
+	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
 
@@ -56,6 +57,7 @@
 
 	"runArgs": [
 		"--privileged",
+		"--net=host",
 		"--disable-content-trust=true"
 	]
 }
